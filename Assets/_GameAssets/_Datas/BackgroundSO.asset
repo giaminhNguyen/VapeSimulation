@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e5ca32ca1a4624ab85ea1ba9d00961, type: 3}
+  m_Name: BackgroundSO
+  m_EditorClassIdentifier: 
+  backgrounds:
+  - icon: {fileID: 21300000, guid: a3c92f60c474c7f41b2600946c11bd9d, type: 2}
+    sprite: {fileID: 21300000, guid: 9e22647367d30a442aade1891fe8c122, type: 2}
+    resolution: {x: 1920, y: 1920}
+  - icon: {fileID: 21300000, guid: 7f41fbf29649b1349b250a97b0b087c5, type: 2}
+    sprite: {fileID: 21300000, guid: ea553bb647fe43049a4c779f56786124, type: 2}
+    resolution: {x: 1920, y: 1920}
+  - icon: {fileID: 21300000, guid: da91b65fa04bbad47bc6dcd78eb220c5, type: 2}
+    sprite: {fileID: 21300000, guid: d146c43b3854929449372068afba7e2b, type: 2}
+    resolution: {x: 1920, y: 1920}
+  - icon: {fileID: 21300000, guid: 9d8d0b8a32e0d3842bb824674d555237, type: 2}
+    sprite: {fileID: 21300000, guid: 95883b8a9be7bde49af2f6b0ec428886, type: 2}
+    resolution: {x: 1920, y: 1920}
+  - icon: {fileID: 21300000, guid: dd2fcc7f663c1f442b2df8af841100b5, type: 2}
+    sprite: {fileID: 21300000, guid: a42db0c7d78172f4fbfe9886c2e6b77a, type: 2}
+    resolution: {x: 1920, y: 1920}
+  - icon: {fileID: 21300000, guid: 23dc57ae6a28872489b6f660e03e6f78, type: 2}
+    sprite: {fileID: 21300000, guid: 030c377d5d6270644b232f554bdea379, type: 2}
+    resolution: {x: 1920, y: 1920}
+  - icon: {fileID: 21300000, guid: 1284b569705cf5047b91a0c890bb4b2e, type: 2}
+    sprite: {fileID: 21300000, guid: 5ee5798c250bc8c438cc195a9087c5ed, type: 2}
+    resolution: {x: 1920, y: 1920}
+  - icon: {fileID: 21300000, guid: d9ccc98352128df4f9fe01239f7e5a1d, type: 2}
+    sprite: {fileID: 21300000, guid: db576bc929d19744d9220a964420b46c, type: 2}
+    resolution: {x: 1920, y: 1920}

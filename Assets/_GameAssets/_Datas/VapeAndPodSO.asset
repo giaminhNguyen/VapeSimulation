@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f267822d7f334a57914832ed090526d2, type: 3}
+  m_Name: VapeAndPodSO
+  m_EditorClassIdentifier: 
+  vapeAndPodData:
+  - icon: {fileID: 21300000, guid: a6287532e4dda2641a399430fab83f73, type: 2}
+    prefab: {fileID: 5589980003158505158, guid: 5d3dc5668a0c0e744adbd45ea6ee95d4,
+      type: 3}
+    defaultTank: 0
+  - icon: {fileID: 21300000, guid: 5cb0ae8a0edbaf94c802bc2b58c43a14, type: 2}
+    prefab: {fileID: 2898984329210018923, guid: daab4d326e4ec2044b129bb61c6c834b,
+      type: 3}
+    defaultTank: 1
+  - icon: {fileID: 21300000, guid: 14c11349e737ee140899124ad1871d00, type: 2}
+    prefab: {fileID: 1918899154648755946, guid: 60479eb2670af4d478f0fbdef0ef44d1,
+      type: 3}
+    defaultTank: 2
+  - icon: {fileID: 21300000, guid: ebb0b66264d82504ab112539092c11dd, type: 2}
+    prefab: {fileID: 3863958411550159418, guid: 63c8d84aaee992643a3aa09a78b68184,
+      type: 3}
+    defaultTank: 3
+  - icon: {fileID: 21300000, guid: 2aa0d2b102151a84ba552e09b6ea95db, type: 2}
+    prefab: {fileID: 788435802473083535, guid: 2cac639dc28dafc41aee575910c824c7, type: 3}
+    defaultTank: 4
+  - icon: {fileID: 21300000, guid: d84082b149d81614d9b7cd7ed5062aa9, type: 2}
+    prefab: {fileID: 5774246403926448658, guid: 092db43ef691208478fd95c650c596a7,
+      type: 3}
+    defaultTank: 5
+  dripTips:
+  - prefab: {fileID: 5617202595506008083, guid: 9337633241ca56042ac359f0aad9b681,
+      type: 3}
+  - prefab: {fileID: 5801373023336279360, guid: 121debedf7b46e2449a380ad89f472e5,
+      type: 3}
+  - prefab: {fileID: 5561332717330715576, guid: 7590745e5af79854aae358c5f75745fe,
+      type: 3}
+  - prefab: {fileID: 7977353500538651958, guid: ae8073a4fc70fa046837f7d205a9a814,
+      type: 3}
+  - prefab: {fileID: 248580405550963743, guid: 8868634846f6dc044b35233e165c92b6, type: 3}
+  - prefab: {fileID: 1565650097256401762, guid: 731d219aff3f8304dadf979c1172397f,
+      type: 3}
+  - prefab: {fileID: 7163267772039743826, guid: ae97a9c48b1d82f439da98e1baa237e2,
+      type: 3}
+  - prefab: {fileID: 1098092727662003720, guid: 65b2b5cd02eb341499880b9f14095dfa,
+      type: 3}
+  - prefab: {fileID: 3318151522570039808, guid: e534c268dbdaaf44a8ee1686f561f1b4,
+      type: 3}
+  - prefab: {fileID: 1987140767489820255, guid: 2c99512caccb82a488dad0ee581545cf,
+      type: 3}
+  - prefab: {fileID: 958251667007294537, guid: 6ef01587ad4ac60418a97b3de3352b7e, type: 3}
+  - prefab: {fileID: 953022984016956777, guid: cf8e656ba659ad84fbe283c8b99392c6, type: 3}
+  - prefab: {fileID: 944662207652663597, guid: 6bf00144c0d76254786ef4975176c738, type: 3}
+  - prefab: {fileID: 8768246275831678607, guid: 8d16a5eea4052df46ad5e99675fe4457,
+      type: 3}
+  tanks:
+  - icon: {fileID: 21300000, guid: 5cc2c086ff5566e439a26e3705db4e63, type: 2}
+    prefab: {fileID: 7236650024820068244, guid: 70f57230a550fa24fa39e68d2a9fd1ba,
+      type: 3}
+  - icon: {fileID: 21300000, guid: e50970e41244f1340ab016c095f73044, type: 2}
+    prefab: {fileID: 7213780056283918125, guid: ec677233c0ba2e742917c51946cd08d6,
+      type: 3}
+  - icon: {fileID: 21300000, guid: 607698c29b4c15749ae43c55e93399ca, type: 2}
+    prefab: {fileID: 3771744063006360296, guid: 8d2610dd65a3fe24d9b38a3554549b03,
+      type: 3}
+  - icon: {fileID: 21300000, guid: ae36e5958fc330b47a494b73218959e8, type: 2}
+    prefab: {fileID: 6215716560235444233, guid: e579012c29eda514f8fcf8384a472e60,
+      type: 3}
+  - icon: {fileID: 21300000, guid: e76d0869873204a4f9861f152e5aae92, type: 2}
+    prefab: {fileID: 6264564831544811754, guid: f1c6db939dbc68f438ba2239f1e249dd,
+      type: 3}
+  - icon: {fileID: 21300000, guid: 60288041022cc814cac03bb882498614, type: 2}
+    prefab: {fileID: 2004648137474023795, guid: 0b3893c9e49922e4693d9cb6fecd9b26,
+      type: 3}
+  - icon: {fileID: 21300000, guid: 6ed8bfeb6926923499ad507bb3e94b7c, type: 2}
+    prefab: {fileID: 2098443476586610064, guid: 230804fd97d79e241968fc7e54eac918,
+      type: 3}
+  - icon: {fileID: 21300000, guid: 51b5bc776a6d20442b25556c65f112ad, type: 2}
+    prefab: {fileID: 5923588109139548734, guid: 29e29deeb48629a4c83f691e47af485e,
+      type: 3}
+  - icon: {fileID: 21300000, guid: 4ae5451edf0fddf4f94962b8a12da267, type: 2}
+    prefab: {fileID: 828104117330964159, guid: b89d8db581d77f74e87fe3e92feaee9e, type: 3}
+  - icon: {fileID: 21300000, guid: e500584a2931b5b45b9710f5b353ae89, type: 2}
+    prefab: {fileID: 5840481955906132341, guid: 5d835c367ff3bab4e8139badf2b22392,
+      type: 3}
+  juices:
+  - icon: {fileID: 21300000, guid: 38751c719ec0e59458d0693159f29fce, type: 2}
+    color: {r: 0.12765832, g: 1, b: 0.09803921, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: 3115206d751ad454fab6c572bc7b7057, type: 2}
+    color: {r: 0.7453266, g: 1, b: 0.09803921, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: 00851b7c186959548920890d0ecaca7d, type: 2}
+    color: {r: 0.51538026, g: 0.09803921, b: 1, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: 8b145086ce0e4c447b251a1de73eff5c, type: 2}
+    color: {r: 0.9547169, g: 0.027020127, b: 0.8202916, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: 1a77621109710d5448fa419134306e14, type: 2}
+    color: {r: 1, g: 0.16295399, b: 0.09803921, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: 9fb919e768876d34b8a34d647529db90, type: 2}
+    color: {r: 0.50980395, g: 0.5882353, b: 0.9568628, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: e550256a6aeca0b47bbe3ca9fc0e95ae, type: 2}
+    color: {r: 0.909804, g: 0.49803925, b: 0.4431373, a: 0.5882353}
+  juiceDefault: {r: 1, g: 1, b: 1, a: 0.5882353}
