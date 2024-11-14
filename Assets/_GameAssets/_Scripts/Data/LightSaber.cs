@@ -11,4 +11,5 @@ public class LightSaberSO : ScriptableObject
 public class LightSaberData : ObjectDataBase
 {
     public GameObject prefab;
+    public Color      defaultColor;
 }

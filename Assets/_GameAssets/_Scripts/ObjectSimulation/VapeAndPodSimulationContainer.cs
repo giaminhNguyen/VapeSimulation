@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityUtils;
 using Random = UnityEngine.Random;
 
 public class VapeAndPodSimulationContainer : MonoBehaviour
@@ -67,15 +68,7 @@ public class VapeAndPodSimulationContainer : MonoBehaviour
 
         BuildVapeAndPod();
     }
-
     
-
-    private void ResetTransform(Transform tf)
-    {
-        tf.localPosition = Vector3.zero;
-        tf.localRotation = Quaternion.identity;
-        tf.localScale = Vector3.one;
-    }
     
     private void ChangeTank()
     {
@@ -113,7 +106,7 @@ public class VapeAndPodSimulationContainer : MonoBehaviour
         if(_currentTip) Destroy(_currentTip);
         var tips = DataGame.Instance.DripTips;
         _currentTip = Instantiate(tips[_currentTipIndex].prefab, _tipPosition);
-        ResetTransform(_currentTip.transform);
+        _currentTip.ResetLocalTransformation();
     }
 
     private void BuildTank()
@@ -122,7 +115,7 @@ public class VapeAndPodSimulationContainer : MonoBehaviour
         if(_currentTank) Destroy(_currentTank);
         var tankData = DataGame.Instance.GetTank(_currentTankIndex);
         _currentTank = Instantiate(tankData.prefab, _tankPosition);
-        ResetTransform(_currentTank.transform);
+        _currentTank.ResetLocalTransformation();
     }
     
     private void BuildJuice(bool isDefault = false)
@@ -148,7 +141,7 @@ public class VapeAndPodSimulationContainer : MonoBehaviour
         if(_currentVape) Destroy(_currentVape);
         var vapeData = DataGame.Instance.GetVapeData(_currentVapeIndex);
         _currentVape = Instantiate(vapeData.prefab, _vapePosition);
-        ResetTransform(_currentVape.transform);
+        _currentVape.ResetLocalTransformation();
     }
     //
     

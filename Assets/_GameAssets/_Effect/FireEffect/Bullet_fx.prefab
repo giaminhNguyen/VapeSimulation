@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2350655382334835154}
   - component: {fileID: 5703144983807578185}
   - component: {fileID: 4000386984486246143}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 7539911901487276516}
   - component: {fileID: 907639609878498136}
   - component: {fileID: 7141610205580650914}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9787,7 +9787,7 @@ GameObject:
   - component: {fileID: 205681763450330337}
   - component: {fileID: 7072445901721714463}
   - component: {fileID: 6238704008371574426}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14684,7 +14684,7 @@ GameObject:
   - component: {fileID: 1067038474892954442}
   - component: {fileID: 6006286459450954794}
   - component: {fileID: 3164218504638066907}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19581,7 +19581,7 @@ GameObject:
   - component: {fileID: 6073731186131718485}
   - component: {fileID: 7013287807722597393}
   - component: {fileID: 7205524152045687385}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Bullet_fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}

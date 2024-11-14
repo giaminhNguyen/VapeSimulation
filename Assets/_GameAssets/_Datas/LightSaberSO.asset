@@ -12,4 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147bb9d97c104cb2825b8071d3450e07, type: 3}
   m_Name: LightSaberSO
   m_EditorClassIdentifier: 
-  LightSaberData: []
+  lightSaberData:
+  - icon: {fileID: 21300000, guid: 6e1477606cb5c184293cae23dd57a729, type: 2}
+    prefab: {fileID: 6317585083931362180, guid: e76d38b872f11554ea2af6f21c333fdc,
+      type: 3}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - icon: {fileID: 21300000, guid: c79e3c2a4b56b294c8299ba4bc5cff7d, type: 2}
+    prefab: {fileID: 6191384907568546353, guid: 6be4d88f5e17ce5478d4ee162ec117cd,
+      type: 3}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - icon: {fileID: 21300000, guid: 46656826563f417469069194b6a62ec5, type: 2}
+    prefab: {fileID: 3086679961856862700, guid: 3179cd195f03b9942938608936753451,
+      type: 3}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - icon: {fileID: 21300000, guid: e4a62f7c81a626146a4dd4704d3ac2fb, type: 2}
+    prefab: {fileID: 1814491475406849867, guid: c4048593c00ec7d4a81bf9a12ce51213,
+      type: 3}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - icon: {fileID: 21300000, guid: 030f555d89912dd47853c96f9abbeb01, type: 2}
+    prefab: {fileID: 8600368757625280277, guid: f19b1946deddf1d43a475d8284c36415,
+      type: 3}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - icon: {fileID: 21300000, guid: 07630dd26567bd74d9561c31dedb4df2, type: 2}
+    prefab: {fileID: 1774105780050027595, guid: 626355ea91af7054ba4c81d8354b2362,
+      type: 3}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - icon: {fileID: 21300000, guid: 0923980360a9bb846ad78093fe744609, type: 2}
+    prefab: {fileID: 2585703508410460763, guid: 1c5488e0f340db645a34b83283354f3d,
+      type: 3}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - icon: {fileID: 21300000, guid: 2cc60e2f886a310429081e6dd332caab, type: 2}
+    prefab: {fileID: 5709398262688702982, guid: ec8eb6a87a4fcf74d853419d3a3b7169,
+      type: 3}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  - icon: {fileID: 21300000, guid: 5387cce864c519a468532f28adb3dcf9, type: 2}
+    prefab: {fileID: 2598999098901581373, guid: f5f66005e36bb8e41a712a590de9fd85,
+      type: 3}
+    defaultColor: {r: 0, g: 0, b: 0, a: 0}

@@ -21,6 +21,7 @@ namespace UnityHelper
         ChangeTank,
         ChangeJuice,
         ChangeBackground,
+        UpdateCapacity,
     }
     
     //

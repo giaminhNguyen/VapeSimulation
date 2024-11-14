@@ -56,7 +56,7 @@ namespace _GameAssets._Scripts.ObjectSimulation
 
         protected override void GetObjectBase()
         {
-            if(!DataGame.Instance) return;
+            if(!_hasData) return;
             _machineData = DataGame.Instance.GetMachineData(EventManager.getSelectedObjectIndex());
             _capacity    = _machineData.capacity;
         }

@@ -6,19 +6,25 @@ namespace _GameAssets._Scripts.ObjectSimulation
 {
     public abstract class ObjectSimulationBase : MonoBehaviour
     {
+        #region Properties
+
         protected bool  _ísReload;
         protected float _capacity;
         protected bool  _onRotateMode;
+        protected bool  _hasData;
 
+        #endregion
+        
+        
         protected virtual void OnEnable()
         {
+            _hasData = DataGame.Instance;
             EventDispatcher.Instance.RegisterListener(EventID.RotateMode, OnRotateMode);
             EventDispatcher.Instance.RegisterListener(EventID.DefaultMode, OnDefaultMode);
             GetObjectBase();
         }
 
-       
-
+        
         protected virtual void OnDisable()
         {
             EventDispatcher.Instance.RemoveListener(EventID.RotateMode, OnRotateMode);
