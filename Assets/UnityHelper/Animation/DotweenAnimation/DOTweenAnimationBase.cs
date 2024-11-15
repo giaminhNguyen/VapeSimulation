@@ -8,6 +8,8 @@ namespace UnityHelper
 {
     public abstract class DOTweenAnimationBase : MonoBehaviour
     {
+        #region Properties
+        
         [Foldout("Manager")]
     
         [SerializeField]
@@ -60,6 +62,29 @@ namespace UnityHelper
         protected RectTransform _targetRt;
         protected bool          _isRectTransform;
 
+        // PUBLIC
+        public float Duration
+        {
+            get => _duration;
+            set => _duration = value;
+        }
+
+        public float Delay
+        {
+            get => _delay;
+            set => _delay = value;
+        }
+
+        public bool IgnoreTimeScale
+        {
+            get => _ignoreTimeScale;
+            set => _ignoreTimeScale = value;
+        }
+        
+        
+        
+        #endregion
+        
         #region Unity Func
 
         protected virtual void Awake()
@@ -121,19 +146,6 @@ namespace UnityHelper
 
         protected abstract void GenerationTween();
 
-        protected virtual void AddEvent()
-        {
-            if(!_currentTween.IsActive()) return;
-            _currentTween.OnStepComplete(() =>
-            {
-                Debug.Log("On Step Complete");
-            });
-
-            _currentTween.OnComplete(() =>
-            {
-                Debug.Log("On Complete");
-            });
-        }
     
         protected virtual void PlayActionVisual(ActionVisualKey actionVisualKey)
         {
@@ -169,18 +181,24 @@ namespace UnityHelper
         {
             if(!_currentTween.IsActive()) return;
             _currentTween.PlayForward();
+            eventPlayForward?.Invoke();
+            actionPlayForward?.Invoke();
         }
 
         public virtual void PlayBackward()
         {
             if(!_currentTween.IsActive()) return;
             _currentTween.PlayBackwards(); 
+            actionPlayBackward?.Invoke();
+            eventPlayBackward?.Invoke();
         }
 
         public virtual void Rewind()
         {
             if(!_currentTween.IsActive()) return;
             _currentTween.Rewind(); 
+            actionRewind?.Invoke();
+            eventRewind?.Invoke();
         }
 
         public virtual void Restart()

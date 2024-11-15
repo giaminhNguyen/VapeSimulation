@@ -24,32 +24,32 @@ namespace UnityHelper
         [SerializeField]
         private float _animTimeDim = 0.3f;
         
-        private bool _hasDim;
-
         private Tweener _dimTweener;
 
         private float _dimAlpha = 1;
+        private float _timeAnimScale;
         
         #endregion
 
         protected override void OnValidate()
         {
             base.OnValidate();
-            _doTweenScale = GetComponent<DOTweenScale>();
+
+            if (!_doTweenScale)
+            {
+                _doTweenScale = GetComponent<DOTweenScale>();
+            }
         }
 
         protected override void InitAwake()
         {
-            _hasDim     = _dimImage;
-
-            if (_hasDim)
-            {
-                var color = _dimImage.color;
-                _dimAlpha       = color.a;
-                color.a         = 0;
-                _dimImage.color = color;
-                _dimTweener     = _dimImage.DOFade(_dimAlpha, _animTimeDim);
-            }
+            var color = _dimImage.color;
+            _dimAlpha       = color.a;
+            color.a         = 0;
+            _dimImage.color = color;
+            _dimTweener = _dimImage.DOFade(_dimAlpha, _animTimeDim)
+                                   .OnComplete(_doTweenScale.PlayForward);
+            _timeAnimScale  = _doTweenScale.Duration;
         }
 
         protected override void OnEnable()
@@ -60,12 +60,9 @@ namespace UnityHelper
 
         protected override void InitOnEnable()
         {
-            if (_hasDim)
-            {
-                var color = _dimImage.color;
-                color.a         = 0;
-                _dimImage.color = color;
-            }
+            var color = _dimImage.color;
+            color.a         = 0;
+            _dimImage.color = color;
         }
 
         protected override void InitStart()
@@ -89,6 +86,7 @@ namespace UnityHelper
         public override void Open()
         {
             base.Open();
+
             _dimTweener?.PlayForward();
             _doTweenScale.PlayForward();
         }

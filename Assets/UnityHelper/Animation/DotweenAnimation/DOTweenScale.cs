@@ -81,7 +81,6 @@ namespace UnityHelper
             }
             
             _tweenGenerationCalled = true;
-            AddEvent();
         }
         
         public override void PlayForward()

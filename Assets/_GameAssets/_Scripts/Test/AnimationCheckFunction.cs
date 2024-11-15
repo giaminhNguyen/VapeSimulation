@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityHelper;
@@ -15,23 +16,38 @@ namespace _GameAssets._Scripts.Test
         [Header("--")]
         public DOTweenAnimationBase animation;
 
+        public Transform tf;
+
+        private Tweener Tweener;
+
+        private void Awake()
+        {
+            Tweener = tf.DOScale(Vector3.one * 4, 1).OnComplete(() =>
+            {
+                Debug.Log("OnCreate");
+            });
+            Tweener.SetAutoKill(false);
+            Tweener.Pause();
+        }
+
         private void Start()
         {
+            
             playForward.onClick.AddListener(() =>
             {
-                animation.PlayForward();
+                Tweener.PlayForward();
             });
             playBackward.onClick.AddListener(() =>
             {
-                animation.PlayBackward();
+                Tweener.PlayBackwards();
             });
             rewind.onClick.AddListener(() =>
             {
-                animation.Rewind();
+                Tweener.Rewind();
             });
             restart.onClick.AddListener(() =>
             {
-                animation.Restart();
+                Tweener.Restart();
             });
             
         }
