@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using UnityUtils;
+using UnityHelper;
 using Random = UnityEngine.Random;
 
 public class VapeAndPodSimulationContainer : MonoBehaviour

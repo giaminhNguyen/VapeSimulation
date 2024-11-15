@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using VInspector.Libs;
 
-namespace UnityUtils {
+namespace UnityHelper {
     public static class ListExtensions {
         static Random rng;
         

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnityUtils {
+namespace UnityHelper {
     #region Vector3
 
     public static class Vector3Extensions {

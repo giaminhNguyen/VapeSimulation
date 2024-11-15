@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace UnityUtils {
+namespace UnityHelper {
     public static class EnumerableExtensions {
         /// <summary>
         /// Thực hiện một hành động trên mỗi phần tử trong chuỗi.

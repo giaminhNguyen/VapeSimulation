@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace UnityUtils
+namespace UnityHelper
 {
     public static class UnityObjectExtensions
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
 
-namespace UnityUtils {
+namespace UnityHelper {
     public static class GameObjectExtensions {
         /// <summary>
         /// Phương thức này được sử dụng để ẩn GameObject trong chế độ xem Hierarchy.

@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityUtils;
+using UnityHelper;
 
 public class LightSaberSimulationContainer : MonoBehaviour
 {

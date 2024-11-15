@@ -22,7 +22,7 @@ namespace UnityHelper
     
         [Header("--")]
         [SerializeField]
-        private float _animTimeDim = 0.3f;
+        private float _animTimeDim = 0.12f;
         
         private Tweener _dimTweener;
 
@@ -47,8 +47,9 @@ namespace UnityHelper
             _dimAlpha       = color.a;
             color.a         = 0;
             _dimImage.color = color;
-            _dimTweener = _dimImage.DOFade(_dimAlpha, _animTimeDim)
-                                   .OnComplete(_doTweenScale.PlayForward);
+            _dimTweener     = _dimImage.DOFade(_dimAlpha, _animTimeDim);
+            _dimTweener.SetAutoKill(false);
+            _dimTweener.Pause();
             _timeAnimScale  = _doTweenScale.Duration;
         }
 
@@ -67,6 +68,7 @@ namespace UnityHelper
 
         protected override void InitStart()
         {
+            _btnClose.onClick.AddListener(Close);
         }
 
         public override void Init()
@@ -78,24 +80,27 @@ namespace UnityHelper
             gameObject.SetActive(true);
         }
 
-        public void Hide()
-        {
-            gameObject.SetActive(false);
-        }
-
         public override void Open()
         {
             base.Open();
-
-            _dimTweener?.PlayForward();
-            _doTweenScale.PlayForward();
+            _dimTweener.PlayForward();
+            DOVirtual.DelayedCall(_animTimeDim * 0.8f, _doTweenScale.PlayForward);
         }
 
         public override void Close()
         {
             base.Close();
-            _dimTweener?.PlayBackwards();
             _doTweenScale.PlayBackward();
+            DOVirtual.DelayedCall(_timeAnimScale * 0.8f, () =>
+            {
+                _dimTweener.PlayBackwards();
+                DOVirtual.DelayedCall(_animTimeDim, () =>
+                {
+                    _doTweenScale.Rewind();
+                    _dimTweener.Rewind();
+                    gameObject.SetActive(false);
+                });
+            });
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace UnityUtils {
+namespace UnityHelper {
     public static class TransformExtensions {
         /// <summary>
         /// Kiểm tra xem transform có nằm trong một khoảng cách nhất định và tùy chọn trong một góc nhất định (FOV) so với transform mục tiêu hay không.
