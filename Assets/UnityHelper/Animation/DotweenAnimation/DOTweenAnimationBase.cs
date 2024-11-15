@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using VInspector;
 
 namespace UnityHelper
@@ -16,6 +17,20 @@ namespace UnityHelper
         [SerializeField]
         private ActionVisualKey _onStart = ActionVisualKey.Restart;
 
+        [EndFoldout]
+
+        [Foldout("Event")]
+
+        public UnityEvent eventPlayForward;
+
+        public UnityEvent eventPlayBackward;
+
+        public UnityEvent eventRewind;
+
+        public Action actionPlayForward;
+        public Action actionPlayBackward;
+        public Action actionRewind;
+        
         [EndFoldout]
 
         [Header("----")]
@@ -105,6 +120,20 @@ namespace UnityHelper
         #endregion
 
         protected abstract void GenerationTween();
+
+        protected virtual void AddEvent()
+        {
+            if(!_currentTween.IsActive()) return;
+            _currentTween.OnStepComplete(() =>
+            {
+                Debug.Log("On Step Complete");
+            });
+
+            _currentTween.OnComplete(() =>
+            {
+                Debug.Log("On Complete");
+            });
+        }
     
         protected virtual void PlayActionVisual(ActionVisualKey actionVisualKey)
         {

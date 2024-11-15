@@ -30,7 +30,15 @@ namespace _GameAssets._Scripts.ObjectSimulation
             EventDispatcher.Instance.RemoveListener(EventID.RotateMode, OnRotateMode);
             EventDispatcher.Instance.RemoveListener(EventID.DefaultMode, OnDefaultMode);
         }
-        
+
+        protected virtual void Start()
+        {
+        }
+
+        protected virtual void Update()
+        {
+        }
+
         private void OnDefaultMode(object obj)
         {
             _onRotateMode = false;
@@ -41,7 +49,17 @@ namespace _GameAssets._Scripts.ObjectSimulation
             _onRotateMode = true;
         }
 
+        protected virtual void UpdateEnergy(float energy)
+        {
+            EventDispatcher.Instance.PostEvent(EventID.UpdateEnergy,energy);
+        }
+
+        protected virtual void UpdateEnergy(int energy)
+        {
+            EventDispatcher.Instance.PostEvent(EventID.UpdateEnergy,energy);
+        }
+
         protected abstract void GetObjectBase();
-        public abstract void OnReload();
+        public abstract void OnReload(object obj);
     }
 }

@@ -28,6 +28,7 @@ namespace _GameAssets._Scripts.ObjectSimulation
         private float       _delayShooting;
         private Coroutine   _delayShootingCoroutine;
         private Coroutine   _delayPlaySmokeEffectCoroutine;
+        private int         _totalBullet;
         #endregion
 
         #region Implement
@@ -36,15 +37,17 @@ namespace _GameAssets._Scripts.ObjectSimulation
         {
             base.OnEnable();
             EventDispatcher.Instance.RegisterListener(EventID.ChangeMode,OnChangeMode);
+            EventDispatcher.Instance.RegisterListener(EventID.Reload,OnReload);
             EventManager.onPointerDown   += OnPointerDown;
             EventManager.onShake         += OnShake;
         }
-        
+
 
         protected override void OnDisable()
         {
             base.OnDisable();
             EventDispatcher.Instance.RemoveListener(EventID.ChangeMode,OnChangeMode);
+            EventDispatcher.Instance.RemoveListener(EventID.Reload,OnReload);
             EventManager.onPointerDown   -= OnPointerDown;
             EventManager.onShake         -= OnShake;
             if(_delayShootingCoroutine != null)
@@ -53,16 +56,24 @@ namespace _GameAssets._Scripts.ObjectSimulation
             }
         }
         
-
         protected override void GetObjectBase()
         {
             if(!_hasData) return;
             _machineData = DataGame.Instance.GetMachineData(EventManager.getSelectedObjectIndex());
             _capacity    = _machineData.capacity;
+            _totalBullet = (int)_capacity;
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            UpdateEnergy(_totalBullet);
         }
         
-        private void Update()
+
+        protected override void Update()
         {
+            base.Update();
             CheckAndUpdateShootingMode();
             CheckAndReload();
             CheckAndAutoShootingMode();
@@ -74,15 +85,16 @@ namespace _GameAssets._Scripts.ObjectSimulation
         
         public void OnShooting()
         {
-            if (_capacity <= 0 || _countShooting <= 0)
+            if (_totalBullet <= 0 || _countShooting <= 0)
             {
                 _countShooting = 0;
                  return;
             }
-            _capacity--;
+            _totalBullet--;
             _countShooting--;
             
             EventDispatcher.Instance.PostEvent(EventID.Shooting);
+            UpdateEnergy(_totalBullet);
         }
         
         public void OnShootingEnd()
@@ -100,11 +112,16 @@ namespace _GameAssets._Scripts.ObjectSimulation
             _delayPlaySmokeEffectCoroutine = StartCoroutine(DelayPlaySmokeEffect(_delayPlaySmokeEffect));
         }
         
-        public override void OnReload()
+        public override void OnReload(object obj)
         {
-            _capacity    = _machineData.capacity;
+            PlayAnimation(_reloadNameAnimation);
+        }
+
+        public void OnReload()
+        {
+            _totalBullet = (int)_capacity;
             _isReloading = false;
-            EventDispatcher.Instance.PostEvent(EventID.Reload);
+            UpdateEnergy(_totalBullet);
         }
         
 
@@ -127,15 +144,15 @@ namespace _GameAssets._Scripts.ObjectSimulation
             }
             _countShooting = 1;
             _delayShooting = _machineData.autoDelay;
-            PlayShootingAnimation("Auto");
+            PlayShootingAnimation();
         }
         
         private void CheckAndReload()
         {
+            if(_totalBullet > 0) return;
             if(_isShooting || _isReloading) return;
-            if(_capacity > 0) return;
             _isReloading = true;
-            PlayAnimation(_reloadNameAnimation);
+            this.PostEvent(EventID.NeedReload);
         }
         
         private void OnChangeMode(object obj)
@@ -175,7 +192,7 @@ namespace _GameAssets._Scripts.ObjectSimulation
             
         }
 
-        private void PlayShootingAnimation(string check = "")
+        private void PlayShootingAnimation()
         {
             if(_delayPlaySmokeEffectCoroutine != null)
             {

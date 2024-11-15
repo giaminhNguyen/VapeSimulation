@@ -1,6 +1,5 @@
 using System;
 using _GameAssets._Scripts.ObjectSimulation;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityHelper;
 
@@ -9,17 +8,19 @@ public class LightSaberSimulation : ObjectSimulationBase
     #region Properties
 
     [SerializeField]
-    private Transform[] _lightSaber;
+    private LightSaberInfo[] _lightSaber;
 
     [SerializeField]
-    private float _speed = 3;
+    private float _activationTime = 0.25f;
+
+    [SerializeField]
+    private float _usageTime = 4f;
     
     //Private
     private float          _progress;
     private LightSaberData _lightSaberData;
     private Color          _currentColor;
-    private float          _capacity;
-    private bool           _isin;
+    private float          _energy;
     
     //KEY
     private static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
@@ -28,50 +29,104 @@ public class LightSaberSimulation : ObjectSimulationBase
 
     #region Implement
 
-    private void Update()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+        _progress       = 0;
+        foreach (var lightSaber in _lightSaber)
+        {
+            UpdateLightSaber(lightSaber,_progress);
+        }
+        //
+        EventDispatcher.Instance.RegisterListener(EventID.Reload,OnReload);
+    }
+    
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        EventDispatcher.Instance.RemoveListener(EventID.Reload,OnReload);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        UpdateEnergy(_energy);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
         UpdateLightSaber();
     }
 
+    #endregion
+    
     private void UpdateLightSaber()
     {
         float nav = 1;
 
         if (!EventManager.onMouseInteract())
         {
-            nav = -1;
             if(_progress <= 0) return;
-        }else if(_progress >= 1) return;
+            nav = -1;
+            
+        }else if( _energy <= 0 || _progress >= 1) return;
+        else
+        {
+            _energy = Mathf.Clamp01(_energy - Time.deltaTime / _usageTime);
 
-        _progress = Mathf.Clamp01(_progress + nav * _speed * Time.deltaTime);
+            if (_energy == 0)
+            {
+                EventDispatcher.Instance.PostEvent(EventID.NeedReload);
+            }
+        }
+
+        _progress = Mathf.Clamp01(_progress + nav *  Time.deltaTime / _activationTime);
 
         foreach (var lightSaber in _lightSaber)
         {
-            lightSaber.localScale = new Vector3(1, 1, _progress);
+            UpdateLightSaber(lightSaber,_progress);
         }
+
+        UpdateEnergy(_energy);
     }
 
-    #endregion
-    
-    
+    private void UpdateLightSaber(LightSaberInfo lightSaber, float progress)
+    {
+        Vector3 vt;
+
+        switch (lightSaber.axisScale)
+        {
+            case Axis.X: 
+                vt = new(progress, 1, 1);
+                break;
+            case Axis.Y: 
+                vt = new(1, progress, 1);
+                break;
+            default: 
+                vt = new(1, 1, progress);
+                break;
+        }
+
+        lightSaber.tf.localScale = vt;
+
+    }
+
+
     protected override void GetObjectBase()
     {
         if(!_hasData) return;
         _lightSaberData = DataGame.Instance.GetLightSaberData(EventManager.getSelectedObjectIndex());
         _currentColor   = _lightSaberData.defaultColor;
-        _capacity       = 0;
+        _capacity       = 1;
+        _energy         = 1;
     }
 
-    public override void OnReload()
+    public override void OnReload(object obj)
     {
-        _capacity = 100;
+        _energy = _capacity;
+        UpdateEnergy(_energy);;
     }
-
-    private void UpdateCapacity()
-    {
-        EventDispatcher.Instance.PostEvent(EventID.UpdateCapacity,_capacity);
-    }
-    
     
     //struct
     [Serializable]

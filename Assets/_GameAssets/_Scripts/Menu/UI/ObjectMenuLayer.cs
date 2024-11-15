@@ -48,6 +48,18 @@ public class ObjectMenuLayer : LayerBase
         }
     }
 
+    protected override void InitAwake()
+    {
+    }
+
+    protected override void InitOnEnable()
+    {
+    }
+
+    protected override void InitStart()
+    {
+    }
+
     public override void Init()
     {
         ObjectDataBase[] objectData;
@@ -72,11 +84,13 @@ public class ObjectMenuLayer : LayerBase
 
     public override void Open()
     {
+        base.Open();
         _content.SetActive(true);
     }
 
     public override void Close()
     {
+        base.Close();
         _content.SetActive(false);
     }
 }

@@ -22,8 +22,9 @@ public class LoadingLayer : LayerBase
 
     #endregion
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         EventManager.loadLayer         += LoadLayer;
         EventManager.goToGamePlayScene += GoToGamePlayScene;
         EventManager.goToMenuScene     += GoToMenuScene;
@@ -94,9 +95,20 @@ public class LoadingLayer : LayerBase
         });
     }
 
+    protected override void InitAwake()
+    {
+    }
+
+    protected override void InitOnEnable()
+    {
+    }
+
+    protected override void InitStart()
+    {
+    }
+
     public override void Init()
     {
-        
     }
 
     private void Open(Action action)
@@ -119,11 +131,13 @@ public class LoadingLayer : LayerBase
 
     public override void Open()
     {
+        base.Open();
         _content.SetActive(true);
     }
 
     public override void Close()
     {
+        base.Close();
         _content.SetActive(false);
     }
 }

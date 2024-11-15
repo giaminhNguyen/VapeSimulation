@@ -209,6 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 934345936820644952}
+  - component: {fileID: 5629938762540417817}
   m_Layer: 6
   m_Name: Saber 1
   m_TagString: Untagged
@@ -232,6 +233,22 @@ Transform:
   - {fileID: 9209508058848733572}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &5629938762540417817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317585083931362180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a6fab8265a59046b70fd74337677c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightSaber:
+  - tf: {fileID: 651671866320817127}
+    axisScale: 2
+  _time: 0.26
 --- !u!1 &7964844758755179373
 GameObject:
   m_ObjectHideFlags: 0

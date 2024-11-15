@@ -8,7 +8,6 @@ namespace UnityHelper
     [AddComponentMenu("DOTween Animation Custom/DOTween Scale")]
     public class DOTweenScale : DOTweenAnimationBase
     {
-        
         [SerializeField,Variants("From","To", "From - To","Curve")]
         private string _scaleType;
         [SerializeField,ShowIfAny("_scaleType","From","_scaleType","From - To")]
@@ -22,6 +21,16 @@ namespace UnityHelper
         private float     _timeCurve;
         private Coroutine _coroutine;
 
+
+        public void Setup(string scaleType = "From",Vector3 from = default,Vector3 to = default,AnimationCurve curve = default,float duration = 0,float delay = 0)
+        {
+            _scaleType = scaleType;
+            _from      = from;
+            _to        = to;
+            _curve     = curve;
+            _duration  = duration;
+            _delay     = delay;
+        }
 
         protected override void Start()
         {
@@ -72,6 +81,7 @@ namespace UnityHelper
             }
             
             _tweenGenerationCalled = true;
+            AddEvent();
         }
         
         public override void PlayForward()
